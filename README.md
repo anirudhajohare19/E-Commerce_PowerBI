@@ -96,15 +96,6 @@ GROUP BY Order_ID
 HAVING COUNT(*) > 1;
 ```
 
-#### **1.4 Summary Statistics (Min, Max, Avg, Count)**
-```sql
-SELECT 
-    COUNT(*) AS Total_Orders, 
-    MIN(Sales) AS Min_Sales, 
-    MAX(Sales) AS Max_Sales, 
-    AVG(Sales) AS Avg_Sales 
-FROM ecommerce_orders;
-```
 
 ### **2️⃣ Sales & Revenue Analysis**
 #### **2.1 Total Sales and Revenue per Region**
