@@ -28,14 +28,22 @@
 ### **1 : Customer Satisfaction & Shipping Performance**
 - **Delayed deliveries reduce customer satisfaction scores** by 15-20%.
 - **Express shipping mode has the highest satisfaction rating** but accounts for fewer orders due to higher costs.
+- **Standard shipping has the highest rate of late deliveries**, affecting customer retention.
+- **Customers who received late deliveries are 30% less likely to reorder**, highlighting an urgent need for improvement in logistics.
 
 ### **2 : Product Returns & Refund Trends**
 - `Clothing` and `Electronics` have the highest return rates.
 - The **most common return reasons** include `size issues`, `defective items`, and `late deliveries`.
+- **Products with frequent returns have lower customer ratings**, indicating a direct link between quality and customer perception.
+- **Refund processing delays negatively impact customer retention**, suggesting a need for automated refund systems.
 
 ### **3 : Profitability & Discounts**
 - Higher **discounts lead to an increase in order volume** but reduce the overall profit margins.
 - **Moderate discounts (5-10%) drive more profitability** compared to extreme discounts (>25%).
+- **High-margin products do not require deep discounting**, whereas low-margin products benefit from targeted promotions.
+- **Discount stacking leads to revenue losses**, requiring stricter discount policies.
+- **Loyalty program customers generate 20% higher revenue per order** than non-members, suggesting investment in retention strategies.
+
 
 ---
 
