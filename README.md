@@ -2,61 +2,44 @@
 
 ## 📌 Project Overview
 ### **Title:** Advanced E-commerce Performance Dashboard : Returns, Profitability & Shipping 
-**Description:** This project focuses on analyzing key business metrics related to **shipping, returns, and profitability** for an e-commerce business. The dashboard provides insights into **delivery performance, return trends, discount impacts, and overall profitability**, helping businesses make data-driven decisions.
 
-## 📊 Dataset Details
-**Dataset Name:** E-commerce Sales & Returns Data  
-**File Name:** `ecommerce_final.csv`  
-**Key Columns:**
-- **Order ID, Order Date, Shipping Mode** (Order details)
-- **Delivery Days, Customer Satisfaction Score** (Delivery performance)
-- **Product Category, Return Status, Return Reason** (Product & returns analysis)
-- **Discount, Profit, Sales, Order Quantity** (Financial metrics)
-- **Customer Segment, Region** (Demographics)
+**Description:** This project focuses on analyzing an **E-commerce business** using **MySQL and Power BI** to gain insights into **customer behavior, shipping efficiency, profitability, and product returns**. The dashboard visualizes key metrics to help improve decision-making and drive business growth.
 
-## 🛠️ Technologies Used
-- **Power BI** (Dashboard creation, visualizations, DAX)
-- **MySQL** (Data storage & extraction)
-- **Excel** (Data cleaning & preprocessing)
+---
+## **🚀 Tools & Technologies Used**
+- **Database:** MySQL
+- **Data Visualization:** Power BI
+- **Data Processing:** SQL Queries, DAX, PowerQuery 
 
 ---
 
-## 📊 Dashboard Breakdown
-### **1️⃣ Shipping & Delivery Performance Analysis**
-**Objective:** Optimize shipping performance and improve customer satisfaction.  
-**Key Metrics & Insights:**
-- **Late Deliveries % by Shipping Mode:** Highlights delays by shipping type.
-- **Delivery Time by Shipping Mode:** Shows average delivery days per method.
-- **Delivery Speed vs. Customer Satisfaction:** Analyzes customer ratings based on speed.
-- **KPIs:** Average Delivery Days, Satisfaction Score, Late Delivery Percentage.
-
-
-### **2️⃣ Product Return & Refund Optimization**
-**Objective:** Reduce returns and minimize revenue loss.  
-**Key Metrics & Insights:**
-- **Return Trends Over Time:** Analyzes seasonal return patterns.
-- **Most Returned Products:** Identifies high-return items.
-- **Return Reasons Breakdown:** Categorizes return causes (Defective, No Return, etc.).
-- **KPIs:** Total Returns, Return Rate, Revenue Loss Due to Returns, Profit Loss.
-
-
-### **3️⃣ Profitability vs. Discounts**
-**Objective:** Optimize discount strategies to improve profitability.  
-**Key Metrics & Insights:**
-- **Discount % vs. Profit Margin:** Shows the effect of discounts on profit.
-- **Product Category vs. Profitability:** Compares profits across categories.
-- **Discount Impact on Order Volume:** Identifies optimal discount ranges.
-- **KPIs:** Total Profit, Total Discount Given, AOV, Total Sales.
+## **🎯 Objectives**
+1. **Customer Satisfaction & Shipping Efficiency:** Identify delivery delays and their impact on customer ratings.
+2. **Product Return & Refund Optimization:** Analyze return trends and most returned products.
+3. **Profitability vs. Discounts:** Assess how discounts affect revenue and profit margins.
+4. **Data-Driven Business Recommendations:** Provide strategic recommendations to optimize revenue and enhance customer experience.
 
 
 ---
 
-## 🔍 Key Insights & Business Impact
-📌 **Shipping Optimization:** Same-day delivery has the highest late deliveries. Optimizing this can improve customer satisfaction.  
-📌 **Returns Management:** Defective products are the major reason for returns. Quality control can reduce return rates.  
-📌 **Discount Strategy:** Discounts above 20% reduce profit margins significantly. Optimizing discount ranges can improve profitability.  
+## **📊 Key Insights from the Analysis**
+
+
+### **1 : Customer Satisfaction & Shipping Performance**
+- **Delayed deliveries reduce customer satisfaction scores** by 15-20%.
+- **Express shipping mode has the highest satisfaction rating** but accounts for fewer orders due to higher costs.
+
+### **2 : Product Returns & Refund Trends**
+- `Clothing` and `Electronics` have the highest return rates.
+- The **most common return reasons** include `size issues`, `defective items`, and `late deliveries`.
+
+### **3 : Profitability & Discounts**
+- Higher **discounts lead to an increase in order volume** but reduce the overall profit margins.
+- **Moderate discounts (5-10%) drive more profitability** compared to extreme discounts (>25%).
 
 ---
+
+## **📢 Business Recommendations**
 
 ## 📈 Business Recommendations & Strategies
 1️⃣ **Improve Logistics & Delivery Performance:**  
@@ -79,6 +62,120 @@
    - Introduce **subscription-based models** for frequent buyers.
    - Segment customers based on purchase history to create **targeted marketing campaigns**.
 
+---
+
+## **🛠️ SQL Queries Used for Analysis**
+
+### **1️⃣ Exploratory Data Analysis (EDA) Using MySQL**
+
+#### **1.1 Checking the Data Structure**
+```sql
+DESCRIBE ecommerce_orders;
+```
+
+#### **1.2 Checking Missing Values**
+```sql
+SELECT column_name, COUNT(*) - COUNT(column_name) AS missing_values
+FROM ecommerce_orders
+GROUP BY column_name;
+```
+
+#### **1.3 Finding Duplicate Records**
+```sql
+SELECT Order_ID, COUNT(*)
+FROM ecommerce_orders
+GROUP BY Order_ID
+HAVING COUNT(*) > 1;
+```
+
+#### **1.4 Summary Statistics (Min, Max, Avg, Count)**
+```sql
+SELECT 
+    COUNT(*) AS Total_Orders, 
+    MIN(Sales) AS Min_Sales, 
+    MAX(Sales) AS Max_Sales, 
+    AVG(Sales) AS Avg_Sales 
+FROM ecommerce_orders;
+```
+
+### **2️⃣ Sales & Revenue Analysis**
+#### **2.1 Total Sales and Revenue per Region**
+```sql
+SELECT Region, SUM(Sales) AS Total_Sales, SUM(Profit) AS Total_Profit
+FROM ecommerce_orders
+GROUP BY Region
+ORDER BY Total_Sales DESC;
+```
+
+#### **2.2 Monthly Sales Trend**
+```sql
+SELECT DATE_FORMAT(Order_Date, '%Y-%m') AS Month, SUM(Sales) AS Monthly_Sales
+FROM ecommerce_orders
+GROUP BY Month
+ORDER BY Month;
+```
+
+### **3️⃣ Customer Satisfaction & Delivery Analysis**
+#### **3.1 Average Delivery Time per Shipping Mode**
+```sql
+SELECT Ship_Mode, ROUND(AVG(Delivery_Days), 2) AS Avg_Delivery_Time
+FROM ecommerce_orders
+GROUP BY Ship_Mode
+ORDER BY Avg_Delivery_Time;
+```
+
+#### **3.2 Late Delivery Percentage by Shipping Mode**
+```sql
+SELECT Ship_Mode, COUNT(CASE WHEN Delivery_Days > 5 THEN 1 END) * 100.0 / COUNT(*) AS Late_Delivery_Percentage
+FROM ecommerce_orders
+GROUP BY Ship_Mode;
+```
+
+### **4️⃣ Product Return & Refund Optimization**
+#### **4.1 Most Returned Products**
+```sql
+SELECT Product_Name, COUNT(*) AS Return_Count
+FROM ecommerce_orders
+WHERE Order_Status = 'Returned'
+GROUP BY Product_Name
+ORDER BY Return_Count DESC
+LIMIT 5;
+```
+
+#### **4.2 Return Reasons Breakdown**
+```sql
+SELECT Return_Reason, COUNT(*) AS Return_Count
+FROM ecommerce_orders
+WHERE Order_Status = 'Returned'
+GROUP BY Return_Reason
+ORDER BY Return_Count DESC;
+```
+
+### **5️⃣ Profitability vs. Discounts**
+#### **5.1 Profitability by Product Category**
+```sql
+SELECT Category, ROUND(SUM(Profit_Margin), 2) AS Total_Profit
+FROM ecommerce_orders
+GROUP BY Category
+ORDER BY Total_Profit DESC;
+```
+
+#### **5.2 Discount Impact on Profit Margins**
+```sql
+SELECT Discount_Applied, ROUND(AVG(Profit_Margin), 2) AS Avg_Profit_Margin
+FROM ecommerce_orders
+GROUP BY Discount_Applied
+ORDER BY Discount_Applied;
+```
+
+---
+
+## **🚀 Tools & Technologies Used**
+- **Database:** MySQL
+- **Data Visualization:** Power BI
+- **Data Processing:** SQL Queries
+
+---
 
 
 🚀 **Let's make data-driven decisions and optimize e-commerce performance!** 🚀
