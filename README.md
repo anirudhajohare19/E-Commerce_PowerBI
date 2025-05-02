@@ -1,19 +1,19 @@
-# 📊 E-commerce Business Insights Dashboard
+# End-To-End E-commerce Business Insights Dashboard | PowerBI + SQL
 
-## 📌 Project Overview
+##  Project Overview
 ### **Title:** Advanced E-commerce Performance Dashboard : Returns, Profitability & Shipping 
 
 **Description:** This project focuses on analyzing an **E-commerce business** using **MySQL and Power BI** to gain insights into **customer behavior, shipping efficiency, profitability, and product returns**. The dashboard visualizes key metrics to help improve decision-making and drive business growth.
 
 ---
-## **🚀 Tools & Technologies Used**
+## **Tools & Technologies Used**
 - **Database:** MySQL
 - **Data Visualization:** Power BI
 - **Data Processing:** SQL Queries, DAX, PowerQuery 
 
 ---
 
-## **🎯 Objectives**
+## **Objectives**
 1. **Customer Satisfaction & Shipping Efficiency:** Identify delivery delays and their impact on customer ratings.
 2. **Product Return & Refund Optimization:** Analyze return trends and most returned products.
 3. **Profitability vs. Discounts:** Assess how discounts affect revenue and profit margins.
@@ -22,7 +22,7 @@
 
 ---
 
-## **📊 Key Insights from the Analysis**
+## **Key Insights from the Analysis**
 
 
 ### **1 : Customer Satisfaction & Shipping Performance**
@@ -47,34 +47,34 @@
 
 ---
 
-## **📢 Business Recommendations**
+## **Business Recommendations**
 
-## 📈 Business Recommendations & Strategies
-1️⃣ **Improve Logistics & Delivery Performance:**  
+##  Business Recommendations & Strategies
+1. **Improve Logistics & Delivery Performance:**  
    - Partner with reliable logistics providers for **faster deliveries**.
    - Introduce **real-time tracking** and updates for customers.
    - Offer **incentives for early deliveries** to improve satisfaction scores.
 
-2️⃣ **Reduce Returns Through Better Quality Control:**  
+2. **Reduce Returns Through Better Quality Control:**  
    - Implement a **strict quality check** before dispatching products.
    - Provide **detailed product descriptions and images** to reduce mismatched expectations.
    - Offer better **customer support** to resolve issues before returns.
 
-3️⃣ **Optimize Discount Strategies:**  
+3. **Optimize Discount Strategies:**  
    - Use **personalized discounts** instead of blanket reductions.
    - Avoid offering **discounts above 20%** unless targeting clearance sales.
    - Run A/B tests on different discount ranges to analyze profitability impacts.
 
-4️⃣ **Customer Retention & Profitability Growth:**  
+4. **Customer Retention & Profitability Growth:**  
    - Identify **high-value returning customers** and offer them loyalty rewards.
    - Introduce **subscription-based models** for frequent buyers.
    - Segment customers based on purchase history to create **targeted marketing campaigns**.
 
 ---
 
-## **🛠️ SQL Queries Used for Analysis**
+## **SQL Queries Used for Analysis**
 
-### **1️⃣ Exploratory Data Analysis (EDA) Using MySQL**
+### **1. Exploratory Data Analysis (EDA) Using MySQL**
 
 #### **1.1 Checking the Data Structure**
 ```sql
@@ -114,7 +114,7 @@ GROUP BY Month
 ORDER BY Month;
 ```
 
-### **3️⃣ Customer Satisfaction & Delivery Analysis**
+### **3. Customer Satisfaction & Delivery Analysis**
 #### **3.1 Average Delivery Time per Shipping Mode**
 ```sql
 SELECT Ship_Mode, ROUND(AVG(Delivery_Days), 2) AS Avg_Delivery_Time
@@ -130,7 +130,7 @@ FROM ecommerce_orders
 GROUP BY Ship_Mode;
 ```
 
-### **4️⃣ Product Return & Refund Optimization**
+### **4. Product Return & Refund Optimization**
 #### **4.1 Most Returned Products**
 ```sql
 SELECT Product_Name, COUNT(*) AS Return_Count
@@ -150,7 +150,7 @@ GROUP BY Return_Reason
 ORDER BY Return_Count DESC;
 ```
 
-### **5️⃣ Profitability vs. Discounts**
+### **5. Profitability vs. Discounts**
 #### **5.1 Profitability by Product Category**
 ```sql
 SELECT Category, ROUND(SUM(Profit_Margin), 2) AS Total_Profit
@@ -169,7 +169,7 @@ ORDER BY Discount_Applied;
 
 ---
 
-## **🚀 Tools & Technologies Used**
+## **Tools & Technologies Used**
 - **Database:** MySQL
 - **Data Visualization:** Power BI
 - **Data Processing:** SQL Queries
@@ -177,4 +177,4 @@ ORDER BY Discount_Applied;
 ---
 
 
-🚀 **Let's make data-driven decisions and optimize e-commerce performance!** 🚀
+ **Let's make data-driven decisions and optimize e-commerce performance!** 
